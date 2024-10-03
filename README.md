@@ -1,183 +1,175 @@
-# Flower: A Friendly Federated Learning Framework
-
-<p align="center">
-  <a href="https://flower.ai/">
-    <img src="https://flower.ai/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Fflower_white_border.c2012e70.png&w=640&q=75" width="140px" alt="Flower Website" />
+<div class="Box-sc-g0xbh4-0 QkQOb js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Flower：一个友好的联邦学习框架</font></font></h1><a id="user-content-flower-a-friendly-federated-learning-framework" class="anchor" aria-label="永久链接：Flower：一个友好的联邦学习框架" href="#flower-a-friendly-federated-learning-framework"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p align="center" dir="auto">
+  <a href="https://flower.ai/" rel="nofollow">
+    <img src="https://camo.githubusercontent.com/42771d95c9548ea5d69f8a31a76c4f5487f829fa2d80482e5d37536f37d84189/68747470733a2f2f666c6f7765722e61692f5f6e6578742f696d6167652f3f75726c3d2532465f6e6578742532467374617469632532466d65646961253246666c6f7765725f77686974655f626f726465722e63323031326537302e706e6726773d36343026713d3735" width="140px" alt="鲜花网站" data-canonical-src="https://flower.ai/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Fflower_white_border.c2012e70.png&amp;w=640&amp;q=75" style="max-width: 100%;">
   </a>
 </p>
-<p align="center">
-    <a href="https://flower.ai/">Website</a> |
-    <a href="https://flower.ai/blog">Blog</a> |
-    <a href="https://flower.ai/docs/">Docs</a> |
-    <a href="https://flower.ai/conf/flower-summit-2022">Conference</a> |
-    <a href="https://flower.ai/join-slack">Slack</a>
-    <br /><br />
+<p align="center" dir="auto">
+    <a href="https://flower.ai/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">|
+    </font></font><a href="https://flower.ai/blog" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">博客</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">|
+    </font></font><a href="https://flower.ai/docs/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">|
+    </font></font><a href="https://flower.ai/conf/flower-summit-2022" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">会议</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">|
+     </font></font><a href="https://flower.ai/join-slack" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Slack</font></font></a>
+    <br><br>
 </p>
-
-[![GitHub license](https://img.shields.io/github/license/adap/flower)](https://github.com/adap/flower/blob/main/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/adap/flower/blob/main/CONTRIBUTING.md)
-![Build](https://github.com/adap/flower/actions/workflows/framework.yml/badge.svg)
-[![Downloads](https://static.pepy.tech/badge/flwr)](https://pepy.tech/project/flwr)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-flwr-blue)](https://hub.docker.com/u/flwr)
-[![Slack](https://img.shields.io/badge/Chat-Slack-red)](https://flower.ai/join-slack)
-
-Flower (`flwr`) is a framework for building federated learning systems. The
-design of Flower is based on a few guiding principles:
-
-- **Customizable**: Federated learning systems vary wildly from one use case to
-  another. Flower allows for a wide range of different configurations depending
-  on the needs of each individual use case.
-
-- **Extendable**: Flower originated from a research project at the University of
-  Oxford, so it was built with AI research in mind. Many components can be
-  extended and overridden to build new state-of-the-art systems.
-
-- **Framework-agnostic**: Different machine learning frameworks have different
-  strengths. Flower can be used with any machine learning framework, for
-  example, [PyTorch](https://pytorch.org), [TensorFlow](https://tensorflow.org), [Hugging Face Transformers](https://huggingface.co/), [PyTorch Lightning](https://pytorchlightning.ai/), [scikit-learn](https://scikit-learn.org/), [JAX](https://jax.readthedocs.io/), [TFLite](https://tensorflow.org/lite/), [MONAI](https://docs.monai.io/en/latest/index.html), [fastai](https://www.fast.ai/), [MLX](https://ml-explore.github.io/mlx/build/html/index.html), [XGBoost](https://xgboost.readthedocs.io/en/stable/), [Pandas](https://pandas.pydata.org/) for federated analytics, or even raw [NumPy](https://numpy.org/)
-  for users who enjoy computing gradients by hand.
-
-- **Understandable**: Flower is written with maintainability in mind. The
-  community is encouraged to both read and contribute to the codebase.
-
-Meet the Flower community on [flower.ai](https://flower.ai)!
-
-## Federated Learning Tutorial
-
-Flower's goal is to make federated learning accessible to everyone. This series of tutorials introduces the fundamentals of federated learning and how to implement them in Flower.
-
-0. **What is Federated Learning?**
-
-   [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-what-is-federated-learning.ipynb) (or open the [Jupyter Notebook](https://github.com/adap/flower/blob/main/doc/source/tutorial-series-what-is-federated-learning.ipynb))
-
-1. **An Introduction to Federated Learning**
-
-   [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-get-started-with-flower-pytorch.ipynb) (or open the [Jupyter Notebook](https://github.com/adap/flower/blob/main/doc/source/tutorial-series-get-started-with-flower-pytorch.ipynb))
-
-2. **Using Strategies in Federated Learning**
-
-   [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-use-a-federated-learning-strategy-pytorch.ipynb) (or open the [Jupyter Notebook](https://github.com/adap/flower/blob/main/doc/source/tutorial-series-use-a-federated-learning-strategy-pytorch.ipynb))
-
-3. **Building Strategies for Federated Learning**
-
-   [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-build-a-strategy-from-scratch-pytorch.ipynb) (or open the [Jupyter Notebook](https://github.com/adap/flower/blob/main/doc/source/tutorial-series-build-a-strategy-from-scratch-pytorch.ipynb))
-
-4. **Custom Clients for Federated Learning**
-
-   [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-customize-the-client-pytorch.ipynb) (or open the [Jupyter Notebook](https://github.com/adap/flower/blob/main/doc/source/tutorial-series-customize-the-client-pytorch.ipynb))
-
-Stay tuned, more tutorials are coming soon. Topics include **Privacy and Security in Federated Learning**, and **Scaling Federated Learning**.
-
-## 30-Minute Federated Learning Tutorial
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adap/flower/blob/main/examples/flower-in-30-minutes/tutorial.ipynb) (or open the [Jupyter Notebook](https://github.com/adap/flower/blob/main/examples/flower-in-30-minutes/tutorial.ipynb))
-
-## Documentation
-
-[Flower Docs](https://flower.ai/docs):
-
-- [Installation](https://flower.ai/docs/framework/how-to-install-flower.html)
-- [Quickstart (TensorFlow)](https://flower.ai/docs/framework/tutorial-quickstart-tensorflow.html)
-- [Quickstart (PyTorch)](https://flower.ai/docs/framework/tutorial-quickstart-pytorch.html)
-- [Quickstart (Hugging Face)](https://flower.ai/docs/framework/tutorial-quickstart-huggingface.html)
-- [Quickstart (PyTorch Lightning)](https://flower.ai/docs/framework/tutorial-quickstart-pytorch-lightning.html)
-- [Quickstart (Pandas)](https://flower.ai/docs/framework/tutorial-quickstart-pandas.html)
-- [Quickstart (fastai)](https://flower.ai/docs/framework/tutorial-quickstart-fastai.html)
-- [Quickstart (JAX)](https://flower.ai/docs/framework/tutorial-quickstart-jax.html)
-- [Quickstart (scikit-learn)](https://flower.ai/docs/framework/tutorial-quickstart-scikitlearn.html)
-- [Quickstart (Android [TFLite])](https://flower.ai/docs/framework/tutorial-quickstart-android.html)
-- [Quickstart (iOS [CoreML])](https://flower.ai/docs/framework/tutorial-quickstart-ios.html)
-
-## Flower Baselines
-
-Flower Baselines is a collection of community-contributed projects that reproduce the experiments performed in popular federated learning publications. Researchers can build on Flower Baselines to quickly evaluate new ideas. The Flower community loves contributions! Make your work more visible and enable others to build on it by contributing it as a baseline!
-
-- [DASHA](https://github.com/adap/flower/tree/main/baselines/dasha)
-- [DepthFL](https://github.com/adap/flower/tree/main/baselines/depthfl)
-- [FedBN](https://github.com/adap/flower/tree/main/baselines/fedbn)
-- [FedMeta](https://github.com/adap/flower/tree/main/baselines/fedmeta)
-- [FedMLB](https://github.com/adap/flower/tree/main/baselines/fedmlb)
-- [FedPer](https://github.com/adap/flower/tree/main/baselines/fedper)
-- [FedProx](https://github.com/adap/flower/tree/main/baselines/fedprox)
-- [FedNova](https://github.com/adap/flower/tree/main/baselines/fednova)
-- [HeteroFL](https://github.com/adap/flower/tree/main/baselines/heterofl)
-- [FedAvgM](https://github.com/adap/flower/tree/main/baselines/fedavgm)
-- [FedStar](https://github.com/adap/flower/tree/main/baselines/fedstar)
-- [FedWav2vec2](https://github.com/adap/flower/tree/main/baselines/fedwav2vec2)
-- [FjORD](https://github.com/adap/flower/tree/main/baselines/fjord)
-- [MOON](https://github.com/adap/flower/tree/main/baselines/moon)
-- [niid-Bench](https://github.com/adap/flower/tree/main/baselines/niid_bench)
-- [TAMUNA](https://github.com/adap/flower/tree/main/baselines/tamuna)
-- [FedVSSL](https://github.com/adap/flower/tree/main/baselines/fedvssl)
-- [FedXGBoost](https://github.com/adap/flower/tree/main/baselines/hfedxgboost)
-- [FedPara](https://github.com/adap/flower/tree/main/baselines/fedpara)
-- [FedAvg](https://github.com/adap/flower/tree/main/baselines/flwr_baselines/flwr_baselines/publications/fedavg_mnist)
-- [FedOpt](https://github.com/adap/flower/tree/main/baselines/flwr_baselines/flwr_baselines/publications/adaptive_federated_optimization)
-
-Please refer to the [Flower Baselines Documentation](https://flower.ai/docs/baselines/) for a detailed categorization of baselines and for additional info including:
-* [How to use Flower Baselines](https://flower.ai/docs/baselines/how-to-use-baselines.html)
-* [How to contribute a new Flower Baseline](https://flower.ai/docs/baselines/how-to-contribute-baselines.html)
-
-## Flower Usage Examples
-
-Several code examples show different usage scenarios of Flower (in combination with popular machine learning frameworks such as PyTorch or TensorFlow).
-
-Quickstart examples:
-
-- [Quickstart (TensorFlow)](https://github.com/adap/flower/tree/main/examples/quickstart-tensorflow)
-- [Quickstart (PyTorch)](https://github.com/adap/flower/tree/main/examples/quickstart-pytorch)
-- [Quickstart (Hugging Face)](https://github.com/adap/flower/tree/main/examples/quickstart-huggingface)
-- [Quickstart (PyTorch Lightning)](https://github.com/adap/flower/tree/main/examples/quickstart-pytorch-lightning)
-- [Quickstart (fastai)](https://github.com/adap/flower/tree/main/examples/quickstart-fastai)
-- [Quickstart (Pandas)](https://github.com/adap/flower/tree/main/examples/quickstart-pandas)
-- [Quickstart (JAX)](https://github.com/adap/flower/tree/main/examples/quickstart-jax)
-- [Quickstart (MONAI)](https://github.com/adap/flower/tree/main/examples/quickstart-monai)
-- [Quickstart (scikit-learn)](https://github.com/adap/flower/tree/main/examples/sklearn-logreg-mnist)
-- [Quickstart (Android [TFLite])](https://github.com/adap/flower/tree/main/examples/android)
-- [Quickstart (iOS [CoreML])](https://github.com/adap/flower/tree/main/examples/ios)
-- [Quickstart (MLX)](https://github.com/adap/flower/tree/main/examples/quickstart-mlx)
-- [Quickstart (XGBoost)](https://github.com/adap/flower/tree/main/examples/xgboost-quickstart)
-
-Other [examples](https://github.com/adap/flower/tree/main/examples):
-
-- [Raspberry Pi & Nvidia Jetson Tutorial](https://github.com/adap/flower/tree/main/examples/embedded-devices)
-- [PyTorch: From Centralized to Federated](https://github.com/adap/flower/tree/main/examples/pytorch-from-centralized-to-federated)
-- [Vertical FL](https://github.com/adap/flower/tree/main/examples/vertical-fl)
-- [Federated Finetuning of OpenAI's Whisper](https://github.com/adap/flower/tree/main/examples/whisper-federated-finetuning)
-- [Federated Finetuning of Large Language Model](https://github.com/adap/flower/tree/main/examples/flowertune-llm)
-- [Federated Finetuning of a Vision Transformer](https://github.com/adap/flower/tree/main/examples/flowertune-vit)
-- [Advanced Flower with TensorFlow/Keras](https://github.com/adap/flower/tree/main/examples/advanced-tensorflow)
-- [Advanced Flower with PyTorch](https://github.com/adap/flower/tree/main/examples/advanced-pytorch)
-- [Comprehensive Flower+XGBoost](https://github.com/adap/flower/tree/main/examples/xgboost-comprehensive)
-- [Flower through Docker Compose and with Grafana dashboard](https://github.com/adap/flower/tree/main/examples/flower-via-docker-compose)
-- [Flower with KaplanMeierFitter from the lifelines library](https://github.com/adap/flower/tree/main/examples/federated-kaplan-meier-fitter)
-- [Sample Level Privacy with Opacus](https://github.com/adap/flower/tree/main/examples/opacus)
-- [Sample Level Privacy with TensorFlow-Privacy](https://github.com/adap/flower/tree/main/examples/tensorflow-privacy)
-- [Flower with a Tabular Dataset](https://github.com/adap/flower/tree/main/examples/fl-tabular)
-
-## Community
-
-Flower is built by a wonderful community of researchers and engineers. [Join Slack](https://flower.ai/join-slack) to meet them, [contributions](#contributing-to-flower) are welcome.
-
+<p dir="auto"><a href="https://github.com/adap/flower/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/7f409bbc1f5fa976d82ad8ffa9d8c3d913eaf29f40309afe2a0a1619bb4829f2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f616461702f666c6f776572" alt="GitHub 许可证" data-canonical-src="https://img.shields.io/github/license/adap/flower" style="max-width: 100%;"></a>
+<a href="https://github.com/adap/flower/blob/main/CONTRIBUTING.md"><img src="https://camo.githubusercontent.com/d88d8d77fa79e828eea397f75a1ebd114d13488aeec4747477ffbd2274de95ed/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5052732d77656c636f6d652d627269676874677265656e2e737667" alt="欢迎 PR" data-canonical-src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/adap/flower/actions/workflows/framework.yml/badge.svg"><img src="https://github.com/adap/flower/actions/workflows/framework.yml/badge.svg" alt="建造" style="max-width: 100%;"></a>
+<a href="https://pepy.tech/project/flwr" rel="nofollow"><img src="https://camo.githubusercontent.com/06ce112c596b8f1dc6ca13c35ffa404bbecaaaac76ebbd55b58971d03d0b8928/68747470733a2f2f7374617469632e706570792e746563682f62616467652f666c7772" alt="下载" data-canonical-src="https://static.pepy.tech/badge/flwr" style="max-width: 100%;"></a>
+<a href="https://hub.docker.com/u/flwr" rel="nofollow"><img src="https://camo.githubusercontent.com/6089ce0344baa440a066d4370659f0b3fc22b8284b6fcda7f99f2bb96151b058/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f446f636b65722532304875622d666c77722d626c7565" alt="Docker 中心" data-canonical-src="https://img.shields.io/badge/Docker%20Hub-flwr-blue" style="max-width: 100%;"></a>
+<a href="https://flower.ai/join-slack" rel="nofollow"><img src="https://camo.githubusercontent.com/55762356e854a1fd1e97dfddb5b30bb2dce66235c49ae274c427dc5cc713a670/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436861742d536c61636b2d726564" alt="松弛" data-canonical-src="https://img.shields.io/badge/Chat-Slack-red" style="max-width: 100%;"></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Flower（</font></font><code>flwr</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）是一个用于构建联邦学习系统的框架。Flower 的设计基于以下几个指导原则：</font></font></p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可定制</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：联邦学习系统在不同用例之间差异很大。Flower 可根据每个用例的需求提供多种不同的配置。</font></font></p>
+</li>
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可扩展</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：Flower 源自牛津大学的一个研究项目，因此它是为人工智能研究而构建的。许多组件可以扩展和覆盖，以构建新的先进系统。</font></font></p>
+</li>
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与框架无关</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：不同的机器学习框架具有不同的优势。Flower 可与任何机器学习框架一起使用，例如</font></font><a href="https://pytorch.org" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PyTorch</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://tensorflow.org" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TensorFlow</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://huggingface.co/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hugging Face Transformers</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://pytorchlightning.ai/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PyTorch Lightning</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://scikit-learn.org/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scikit-learn</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://jax.readthedocs.io/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JAX</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://tensorflow.org/lite/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TFLite</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://docs.monai.io/en/latest/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MONAI</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://www.fast.ai/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fastai</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://ml-explore.github.io/mlx/build/html/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MLX</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><a href="https://xgboost.readthedocs.io/en/stable/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">XGBoost</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、用于联合分析的</font></font><a href="https://pandas.pydata.org/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pandas</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，甚至</font><font style="vertical-align: inherit;">
+对于喜欢手动计算梯度的用户来说，原始</font></font><a href="https://numpy.org/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NumPy 。</font></font></a><font style="vertical-align: inherit;"></font></p>
+</li>
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">易于理解</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：Flower 在编写时充分考虑了可维护性。我们鼓励社区阅读代码库并为其做出贡献。</font></font></p>
+</li>
+</ul>
+<p dir="auto"><font style="vertical-align: inherit;"></font><a href="https://flower.ai" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在flower.ai</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上与 Flower 社区见面</font><font style="vertical-align: inherit;">！</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦学习教程</font></font></h2><a id="user-content-federated-learning-tutorial" class="anchor" aria-label="永久链接：联邦学习教程" href="#federated-learning-tutorial"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Flower 的目标是让每个人都能使用联邦学习。本系列教程介绍了联邦学习的基础知识以及如何在 Flower 中实现它们。</font></font></p>
+<ol start="0" dir="auto">
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">什么是联邦学习？</font></font></strong></p>
+<p dir="auto"><a href="https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-what-is-federated-learning.ipynb" rel="nofollow"><img src="https://camo.githubusercontent.com/96889048f8a9014fdeba2a891f97150c6aac6e723f5190236b10215a97ed41f3/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="在 Colab 中打开" data-canonical-src="https://colab.research.google.com/assets/colab-badge.svg" style="max-width: 100%;"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或打开</font></font><a href="https://github.com/adap/flower/blob/main/doc/source/tutorial-series-what-is-federated-learning.ipynb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jupyter Notebook</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦学习简介</font></font></strong></p>
+<p dir="auto"><a href="https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-get-started-with-flower-pytorch.ipynb" rel="nofollow"><img src="https://camo.githubusercontent.com/96889048f8a9014fdeba2a891f97150c6aac6e723f5190236b10215a97ed41f3/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="在 Colab 中打开" data-canonical-src="https://colab.research.google.com/assets/colab-badge.svg" style="max-width: 100%;"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或打开</font></font><a href="https://github.com/adap/flower/blob/main/doc/source/tutorial-series-get-started-with-flower-pytorch.ipynb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jupyter Notebook</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在联邦学习中使用策略</font></font></strong></p>
+<p dir="auto"><a href="https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-use-a-federated-learning-strategy-pytorch.ipynb" rel="nofollow"><img src="https://camo.githubusercontent.com/96889048f8a9014fdeba2a891f97150c6aac6e723f5190236b10215a97ed41f3/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="在 Colab 中打开" data-canonical-src="https://colab.research.google.com/assets/colab-badge.svg" style="max-width: 100%;"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或打开</font></font><a href="https://github.com/adap/flower/blob/main/doc/source/tutorial-series-use-a-federated-learning-strategy-pytorch.ipynb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jupyter Notebook</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">构建联邦学习策略</font></font></strong></p>
+<p dir="auto"><a href="https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-build-a-strategy-from-scratch-pytorch.ipynb" rel="nofollow"><img src="https://camo.githubusercontent.com/96889048f8a9014fdeba2a891f97150c6aac6e723f5190236b10215a97ed41f3/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="在 Colab 中打开" data-canonical-src="https://colab.research.google.com/assets/colab-badge.svg" style="max-width: 100%;"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或打开</font></font><a href="https://github.com/adap/flower/blob/main/doc/source/tutorial-series-build-a-strategy-from-scratch-pytorch.ipynb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jupyter Notebook</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦学习的自定义客户端</font></font></strong></p>
+<p dir="auto"><a href="https://colab.research.google.com/github/adap/flower/blob/main/doc/source/tutorial-series-customize-the-client-pytorch.ipynb" rel="nofollow"><img src="https://camo.githubusercontent.com/96889048f8a9014fdeba2a891f97150c6aac6e723f5190236b10215a97ed41f3/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="在 Colab 中打开" data-canonical-src="https://colab.research.google.com/assets/colab-badge.svg" style="max-width: 100%;"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或打开</font></font><a href="https://github.com/adap/flower/blob/main/doc/source/tutorial-series-customize-the-client-pytorch.ipynb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jupyter Notebook</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">敬请关注，更多教程即将推出。主题包括</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦学习中的隐私和安全</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以及</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">扩展联邦学习</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">30 分钟联邦学习教程</font></font></h2><a id="user-content-30-minute-federated-learning-tutorial" class="anchor" aria-label="永久链接：30 分钟联邦学习教程" href="#30-minute-federated-learning-tutorial"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a href="https://colab.research.google.com/github/adap/flower/blob/main/examples/flower-in-30-minutes/tutorial.ipynb" rel="nofollow"><img src="https://camo.githubusercontent.com/96889048f8a9014fdeba2a891f97150c6aac6e723f5190236b10215a97ed41f3/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="在 Colab 中打开" data-canonical-src="https://colab.research.google.com/assets/colab-badge.svg" style="max-width: 100%;"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或打开</font></font><a href="https://github.com/adap/flower/blob/main/examples/flower-in-30-minutes/tutorial.ipynb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jupyter Notebook</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档</font></font></h2><a id="user-content-documentation" class="anchor" aria-label="永久链接：文档" href="#documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a href="https://flower.ai/docs" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">花卉文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
+<ul dir="auto">
+<li><a href="https://flower.ai/docs/framework/how-to-install-flower.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-tensorflow.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (TensorFlow)</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-pytorch.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（PyTorch）</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-huggingface.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（拥抱脸）</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-pytorch-lightning.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（PyTorch Lightning）</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-pandas.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（Pandas）</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-fastai.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（fastai）</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-jax.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (JAX)</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-scikitlearn.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (scikit-learn)</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-android.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (Android [TFLite])</font></font></a></li>
+<li><a href="https://flower.ai/docs/framework/tutorial-quickstart-ios.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (iOS [CoreML])</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">花基线</font></font></h2><a id="user-content-flower-baselines" class="anchor" aria-label="固定链接：花卉基线" href="#flower-baselines"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Flower Baselines 是社区贡献的项目集合，这些项目重现了流行的联邦学习出版物中进行的实验。研究人员可以在 Flower Baselines 的基础上快速评估新想法。Flower 社区喜欢贡献！通过将其作为基准进行贡献，让您的工作更加引人注目，并让其他人能够在此基础上继续发展！</font></font></p>
+<ul dir="auto">
+<li><a href="https://github.com/adap/flower/tree/main/baselines/dasha"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大莎</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/depthfl"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">深度 FL</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedbn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦储备银行</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedmeta"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦元数据</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedmlb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦职业棒球大联盟</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedper"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦储备委员会</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedprox"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦代理制度</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fednova"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦新星</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/heterofl"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">异质性</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedavgm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦平均数</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedstar"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦之星</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedwav2vec2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FedWav2vec2</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fjord"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">菲约德</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/moon"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">月亮</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/niid_bench"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">niid-工作台</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/tamuna"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">塔木娜</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedvssl"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦证券交易委员会</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/hfedxgboost"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FedXGBoost</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/fedpara"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦储备委员会</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/flwr_baselines/flwr_baselines/publications/fedavg_mnist"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦平均数</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/baselines/flwr_baselines/flwr_baselines/publications/adaptive_federated_optimization"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联邦选择</font></font></a></li>
+</ul>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请参阅</font></font><a href="https://flower.ai/docs/baselines/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Flower 基线文档，</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解基线的详细分类和其他信息，包括：</font></font></p>
+<ul dir="auto">
+<li><a href="https://flower.ai/docs/baselines/how-to-use-baselines.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如何使用花卉基线</font></font></a></li>
+<li><a href="https://flower.ai/docs/baselines/how-to-contribute-baselines.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如何贡献新的 Flower Baseline</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">花卉用法示例</font></font></h2><a id="user-content-flower-usage-examples" class="anchor" aria-label="永久链接：花卉用法示例" href="#flower-usage-examples"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">几个代码示例展示了 Flower 的不同使用场景（与 PyTorch 或 TensorFlow 等流行的机器学习框架结合）。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门示例：</font></font></p>
+<ul dir="auto">
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-tensorflow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (TensorFlow)</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-pytorch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（PyTorch）</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-huggingface"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（拥抱脸）</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-pytorch-lightning"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（PyTorch Lightning）</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-fastai"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（fastai）</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-pandas"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（Pandas）</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-jax"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (JAX)</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-monai"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (MONAI)</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/sklearn-logreg-mnist"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (scikit-learn)</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/android"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (Android [TFLite])</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/ios"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门 (iOS [CoreML])</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/quickstart-mlx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速启动 (MLX)</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/xgboost-quickstart"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速入门（XGBoost）</font></font></a></li>
+</ul>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他</font></font><a href="https://github.com/adap/flower/tree/main/examples"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例子</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
+<ul dir="auto">
+<li><a href="https://github.com/adap/flower/tree/main/examples/embedded-devices"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Raspberry Pi 和 Nvidia Jetson 教程</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/pytorch-from-centralized-to-federated"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PyTorch：从集中式到联合式</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/vertical-fl"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">垂直高度</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/whisper-federated-finetuning"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenAI Whisper 的联合微调</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/flowertune-llm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大型语言模型的联合微调</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/flowertune-vit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">视觉变换器的联合微调</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/advanced-tensorflow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 TensorFlow/Keras 进行进阶 Flower</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/advanced-pytorch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 PyTorch 进行进阶 Flower</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/xgboost-comprehensive"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">综合Flower+XGBoost</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/flower-via-docker-compose"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过 Docker Compose 和 Grafana 仪表板进行 Flower</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/federated-kaplan-meier-fitter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来自生命线库的 KaplanMeierFitter 的 Flower</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/opacus"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 Opacus 进行样本级别隐私</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/tensorflow-privacy"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 TensorFlow-Privacy 进行示例级别隐私</font></font></a></li>
+<li><a href="https://github.com/adap/flower/tree/main/examples/fl-tabular"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用表格数据集的花朵</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></h2><a id="user-content-community" class="anchor" aria-label="固定链接：社区" href="#community"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Flower 是由一群出色的研究人员和工程师创建的。</font></font><a href="https://flower.ai/join-slack" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加入 Slack</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与他们会面，</font><font style="vertical-align: inherit;">欢迎</font></font><a href="#contributing-to-flower"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">贡献。</font></font></a><font style="vertical-align: inherit;"></font></p>
 <a href="https://github.com/adap/flower/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=adap/flower&columns=10" />
+  <img src="https://camo.githubusercontent.com/345d68f215a8ed4f4f082cf6278bcd69103ddf12590506373b15375ae84ce8f8/68747470733a2f2f636f6e747269622e726f636b732f696d6167653f7265706f3d616461702f666c6f77657226636f6c756d6e733d3130" data-canonical-src="https://contrib.rocks/image?repo=adap/flower&amp;columns=10" style="max-width: 100%;">
 </a>
-
-## Citation
-
-If you publish work that uses Flower, please cite Flower as follows:
-
-```bibtex
-@article{beutel2020flower,
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">引用</font></font></h2><a id="user-content-citation" class="anchor" aria-label="永久链接：引用" href="#citation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您发表使用 Flower 的作品，请按以下方式引用 Flower：</font></font></p>
+<div class="highlight highlight-text-bibtex notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-k">@article</span>{<span class="pl-en">beutel2020flower</span>,
+  <span class="pl-s">title</span>=<span class="pl-s"><span class="pl-pds">{</span>Flower: A Friendly Federated Learning Research Framework<span class="pl-pds">}</span></span>,
+  <span class="pl-s">author</span>=<span class="pl-s"><span class="pl-pds">{</span>Beutel, Daniel J and Topal, Taner and Mathur, Akhil and Qiu, Xinchi and Fernandez-Marques, Javier and Gao, Yan and Sani, Lorenzo and Kwing, Hei Li and Parcollet, Titouan and Gusmão, Pedro PB de and Lane, Nicholas D<span class="pl-pds">}</span></span>,
+  <span class="pl-s">journal</span>=<span class="pl-s"><span class="pl-pds">{</span>arXiv preprint arXiv:2007.14390<span class="pl-pds">}</span></span>,
+  <span class="pl-s">year</span>=<span class="pl-s"><span class="pl-pds">{</span>2020<span class="pl-pds">}</span></span>
+}</pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="@article{beutel2020flower,
   title={Flower: A Friendly Federated Learning Research Framework},
   author={Beutel, Daniel J and Topal, Taner and Mathur, Akhil and Qiu, Xinchi and Fernandez-Marques, Javier and Gao, Yan and Sani, Lorenzo and Kwing, Hei Li and Parcollet, Titouan and Gusmão, Pedro PB de and Lane, Nicholas D},
   journal={arXiv preprint arXiv:2007.14390},
   year={2020}
-}
-```
-
-Please also consider adding your publication to the list of Flower-based publications in the docs, just open a Pull Request.
-
-## Contributing to Flower
-
-We welcome contributions. Please see [CONTRIBUTING.md](CONTRIBUTING.md) to get started!
+}" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请考虑将您的出版物添加到文档中的基于 Flower 的出版物列表中，只需打开一个 Pull 请求即可。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为花卉做贡献</font></font></h2><a id="user-content-contributing-to-flower" class="anchor" aria-label="永久链接：为 Flower 做贡献" href="#contributing-to-flower"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">欢迎大家投稿。请参阅</font></font><a href="/adap/flower/blob/main/CONTRIBUTING.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CONTRIBUTING.md</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开始投稿！</font></font></p>
+</article></div>
